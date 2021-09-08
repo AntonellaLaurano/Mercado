@@ -11,7 +11,7 @@ const ListUsers = () => {
     
     return (
         <div className="ListUser">
-            <table>
+            <table className="centered">
                 <thead>
                 <tr>
                     <th>First Name</th>

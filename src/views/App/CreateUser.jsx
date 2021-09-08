@@ -3,8 +3,6 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { createUser } from '../../actions/user';
 
-import M from 'materialize-css'
-
 import './css/CreateUser.css'
 
 const CreateUser = () => {
@@ -24,11 +22,6 @@ const CreateUser = () => {
 
     const { firstname, lastname, email, password } = dataCreate;
 
-    const handleAdd = () => {
-        var elems = document.querySelectorAll('.modal');
-        M.Modal.init(elems);
-    }
-
     const handleChange = (e) => {
         const value = e.target.value;
         
@@ -47,8 +40,7 @@ const CreateUser = () => {
 
     return (
         <div className="CreateUser">
-            <button data-target="modalCU" className="waves-effect waves-light btn modal-trigger" onClick={handleAdd}>New User</button>
-            <div id="modalCU" className="row modal animate__animated animate__fadeIn">
+            <div id="modalC" className="row modal animate__animated animate__fadeIn">
                 <form className="col s12" onSubmit={handleCreate}>
                     <div className="row">
                         <div className="input-field col s6">

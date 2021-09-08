@@ -41,18 +41,18 @@ export const detailsUser = (token) => {
             }
         });
         const detailsU = await response.json()
-        return dispatch(details(detailsU.firstname, detailsU.lastname, detailsU.roles.name, token));
+        return dispatch(details(detailsU.firstname, detailsU.lastname, detailsU.email, detailsU.roles.name));
     }
 }
 
-export const details = (firstname, lastname, role, access) => {
+export const details = (firstname, lastname, email, role) => {
     return {
         type: types.details,
         payload: {
             firstname,
             lastname,
             role,
-            access
+            email
         }
     };
 }
