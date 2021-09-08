@@ -1,0 +1,40 @@
+.login {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgb(6,184,211);
+    background: linear-gradient(150deg, rgba(6,184,211,1) 0%, rgba(127,101,194,1) 35%, rgba(171,71,188,1) 100%); 
+}
+
+.container {
+   padding: 50px 30px;
+   width: 30vw;
+   border-radius: 10px;
+   background: white;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    align-self: center;
+    width: 15vw;
+    border-radius: 50px;
+}
+
+@media (max-width: 768px){
+    .container {
+        width: 60vw;
+    }
+}
+
+@media (max-width: 425px){
+    .btn {
+        width: 30vw;
+    }
+}
+
