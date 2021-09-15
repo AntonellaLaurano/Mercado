@@ -1,4 +1,4 @@
-.Login {
+.login {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -9,8 +9,12 @@
     background: linear-gradient(194deg, rgba(250,230,43,1) 0%, rgba(255,153,0,1) 32%, rgba(255,51,17,1) 100%);
 }
 
+.loginForm {
+    padding: 40px;
+}
+
 .container {
-   width: 30vw;
+   width: 50vw;
    border-radius: 10px;
    background: rgba(255, 255, 255, .5);
    -webkit-backdrop-filter: blur(6px);

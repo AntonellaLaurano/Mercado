@@ -1,35 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { BrowserRouter as Router, Redirect, Switch } from "react-router-dom"
-import { users } from '../redux/actions/user'
-import Developer from '../views/Developer/Developer'
+import { BrowserRouter as Router, Redirect, Switch } from 'react-router-dom'
+import { clean, users } from '../redux/actions/user'
 import AuthRouter from './AuthRouter'
 import PrivateRouter from './PrivateRouter'
 import PublicRouter from './PublicRouter'
 import { loadData } from '../helpers/loadData'
-import { detailsUser} from '../redux/actions/auth'
+import { detailsUser, logout } from '../redux/actions/auth'
 import UserRouter from './UserRouter'
 
 const AppRouter = () => {
     const dispatch = useDispatch();
     
-    const [log, setLog] = useState(false);
-
+    const log = useSelector(state => state.auth.log);
     const access = useSelector(state => state.auth.access);
     const role = useSelector(state => state.auth.role);
+    //dispatch(logout())
+    //dispatch(clean())
 
     useEffect(() => {
         if(access) {
-            setLog(true);
             const data = async () => {
                 const res = await loadData(access);
+                console.log(res)
                 dispatch(detailsUser(access));
                 dispatch(users(res));
             }
             data();
-        } else {
-            setLog(false);
-        }   
+        }
     }, [access, dispatch]);
 
     return (
@@ -37,7 +35,6 @@ const AppRouter = () => {
             <Switch>
                 <PublicRouter path='/login' log={log} role={role} component={AuthRouter} />
                 <PrivateRouter exact path='/desarrollador/' log={log} component={UserRouter} />
-                <PrivateRouter exact path='/desarrollador/:seccion' log={log} component={Developer} />
                 <Redirect path='/**' to='/login'/>
             </Switch>
         </Router>

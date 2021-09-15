@@ -24,3 +24,11 @@ label.active {
     padding: 30px 40px;
     border-radius: 20px;
 }
+
+.glass {
+    padding: 40px;
+    background-color: rgba(255, 255, 255, .7);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-radius: 10px;
+}

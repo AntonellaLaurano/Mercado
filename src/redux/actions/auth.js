@@ -5,23 +5,27 @@ export const loginEmail = (user = {}) => {
     const url = API_URL + 'auth/login';
     return async (dispatch) => {
         const response = await fetch(url, {
-            method: "POST",
+            method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(user)
         });
         const userLog = await response.json();
-        return dispatch(login(userLog.access, userLog.role.name));
+        console.log(userLog);
+        return dispatch(login(userLog.access, userLog.refresh, userLog.expired, userLog.role.name, userLog.permissions));
     }
 }
 
-export const login = (access, role) => {
+export const login = (access, refresh, expired, role, permissions) => {
     return {
         type: types.login,
         payload: {
             access,
-            role
+            refresh,
+            expired,
+            role,
+            permissions
         }
     };
 }
@@ -37,7 +41,7 @@ export const detailsUser = (token) => {
     const url = API_URL + 'users?self';
     return async (dispatch) => {
         const response = await fetch(url, {
-            method: "GET",
+            method: 'GET',
             headers: {
                 'authorization': token,
                 'content-type': 'application/json'

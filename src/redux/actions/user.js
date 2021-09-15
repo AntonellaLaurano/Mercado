@@ -12,7 +12,7 @@ export const createUser = (user = {}, token = '') => {
     const url = API_URL + 'users';
     return async (dispatch) => {
         const response = await fetch(url, {
-            method: "POST",
+            method: 'POST',
             headers: {
                 'authorization': token,
                 'content-type': 'application/json'
@@ -35,7 +35,7 @@ export const getUserById = (id, token) => {
     const url = API_URL + `users/${id}`;
     return async (dispacth) => {
         const response = await fetch(url, {
-            method: "GET",
+            method: 'GET',
             headers: {
                 'authorization': token,
                 'content-type': 'application/json'
@@ -55,9 +55,9 @@ export const getUser = (UserById) => {
 
 export const updateUser = (user, id, token) => {
     const url = API_URL + `roles/${user.roles.id}/users/${id}/`;
-    return async (dispatch) => {console.log("sdsd")
+    return async (dispatch) => {console.log('sdsd')
         const response = await fetch(url, {
-            method: "PUT",
+            method: 'PUT',
             headers: {
                 'authorization': token,
                 'content-type': 'application/json'
@@ -65,7 +65,11 @@ export const updateUser = (user, id, token) => {
             body: JSON.stringify(user)
         });
         const userU = await response.json();
-        return dispatch(Update(userU.data));
+        const userWithRole = {
+                                ...userU.data,
+                                roles: user.roles
+                            }
+        return dispatch(Update(userWithRole));
     }
 }
 
@@ -78,10 +82,9 @@ export const Update = (userU) => {
 
 export const deleteUser = (id, token) => {
     const url = API_URL + `users/${id}`;
-    console.log(id);
     return async (dispatch) => {
         await fetch(url, {
-            method: "DELETE",
+            method: 'DELETE',
             headers: {
                 'authorization': token,
                 'content-type': 'application/json'

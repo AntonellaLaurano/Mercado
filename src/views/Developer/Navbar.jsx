@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
+import M from 'materialize-css'
 
-import M from 'materialize-css';
+import NavDropdown from './NavDropdown'
 
-import './css/Navbar.css';
-import NavDropdown from './NavDropdown';
+import './css/Navbar.css'
 
 const Navbar = () => {
     const handleSidenav = () => {

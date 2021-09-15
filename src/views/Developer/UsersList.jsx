@@ -1,14 +1,16 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
-import User from './ListUser/User';
+import { useSelector } from 'react-redux'
+import User from './UserList/User'
 
-import './css/ListUsers.css'
+import './css/UsersList.css'
 
-const ListUsers = () => {
+const UsersList = ({ title }) => {
     const users = useSelector((state) => state.user.data);
+    console.log(users)
     
     return (
-        <div className='ListUser'>
+        <div className='usersList'>
+            <h4 className='title'>{title}</h4>
             <table className='centered'>
                 <tbody>
                         {
@@ -23,4 +25,4 @@ const ListUsers = () => {
     )
 }
 
-export default ListUsers;
+export default UsersList;

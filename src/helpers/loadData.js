@@ -1,9 +1,9 @@
-import { API_URL } from "../Api/api"
+import { API_URL } from '../Api/api'
 
-export const loadData = async (token) => {
-    const url = API_URL + "users";
+export const loadData = async (token, direction = 'users') => {
+    const url = API_URL + direction;
     const response = await fetch(url, {
-        method: "GET",
+        method: 'GET',
         headers: {
             'authorization': token,
             'content-type': 'application/json'

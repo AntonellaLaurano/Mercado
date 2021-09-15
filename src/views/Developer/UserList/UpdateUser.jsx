@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux'
 
-import { updateUser } from '../../../redux/actions/user';
-import { userById } from '../../../helpers/userById.js';
+import { updateUser } from '../../../redux/actions/user'
+import { userById } from '../../../helpers/userById.js'
 
-import "./css/UpdateUser.css"
+import './css/UpdateUser.css'
 
 import M from 'materialize-css'
 
@@ -87,7 +87,7 @@ const UpdateUser = ({ id }) => {
                                 <label htmlFor={`firstname${id}`} className='active'>First Name</label>
                             </div>
                             <div className='input-field col s6'>
-                                <input onChange={handleChange} value={dataUpdate.lastname} name="lastname" id={`lastname${id}`} type='text' className='validate'/>
+                                <input onChange={handleChange} value={dataUpdate.lastname} name='lastname' id={`lastname${id}`} type='text' className='validate'/>
                                 <label htmlFor={`lastname${id}`} className='active'>Last Name</label>
                             </div>
                         </div>
