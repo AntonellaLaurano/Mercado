@@ -1,18 +1,20 @@
-.login {
+.Login {
     width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: rgb(6,184,211);
-    background: linear-gradient(150deg, rgba(6,184,211,1) 0%, rgba(127,101,194,1) 35%, rgba(171,71,188,1) 100%); 
+    padding: 80px 50px;
+    background: rgb(250,230,43);
+    background: linear-gradient(194deg, rgba(250,230,43,1) 0%, rgba(255,153,0,1) 32%, rgba(255,51,17,1) 100%);
 }
 
 .container {
-   padding: 50px 30px;
    width: 30vw;
    border-radius: 10px;
-   background: white;
+   background: rgba(255, 255, 255, .5);
+   -webkit-backdrop-filter: blur(6px);
+   backdrop-filter: blur(6px);
 }
 
 form {

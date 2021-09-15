@@ -1,8 +1,8 @@
-import { API_URL } from "../Api/api"
-import { types } from "../types/types"
+import { API_URL } from '../../Api/api'
+import { types } from '../types/types'
 
 export const loginEmail = (user = {}) => {
-    const url = API_URL + "auth/login";
+    const url = API_URL + 'auth/login';
     return async (dispatch) => {
         const response = await fetch(url, {
             method: "POST",
@@ -12,14 +12,17 @@ export const loginEmail = (user = {}) => {
             body: JSON.stringify(user)
         });
         const userLog = await response.json();
-        return dispatch(login(userLog.access));
+        return dispatch(login(userLog.access, userLog.role.name));
     }
 }
 
-export const login = (access) => {
+export const login = (access, role) => {
     return {
         type: types.login,
-        payload: access
+        payload: {
+            access,
+            role
+        }
     };
 }
 
@@ -31,7 +34,7 @@ export const logout = () => {
 }
 
 export const detailsUser = (token) => {
-    const url = API_URL + "users?self";
+    const url = API_URL + 'users?self';
     return async (dispatch) => {
         const response = await fetch(url, {
             method: "GET",
@@ -41,18 +44,13 @@ export const detailsUser = (token) => {
             }
         });
         const detailsU = await response.json()
-        return dispatch(details(detailsU.firstname, detailsU.lastname, detailsU.email, detailsU.roles.name));
+        return dispatch(details(detailsU));
     }
 }
 
-export const details = (firstname, lastname, email, role) => {
+export const details = (detailsU) => {
     return {
         type: types.details,
-        payload: {
-            firstname,
-            lastname,
-            role,
-            email
-        }
+        payload: detailsU
     };
 }

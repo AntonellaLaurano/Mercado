@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
-import { updateUser } from '../../../actions/user';
+import { updateUser } from '../../../redux/actions/user';
 import { userById } from '../../../helpers/userById.js';
 
 import "./css/UpdateUser.css"
@@ -18,12 +18,12 @@ const UpdateUser = ({ id }) => {
 
 
     const [dataUpdate, setDataUpdate] = useState({
-        firstname: "",
-        lastname: "",
-        email: "",
+        firstname: '',
+        lastname: '',
+        email: '',
         birthday_date: null,
         roles: {},
-        sexual_orientation: "F",
+        sexual_orientation: 'F',
         profiles_social_networks: null,
         profile_image: null,
         dni_information: null,
@@ -47,13 +47,12 @@ const UpdateUser = ({ id }) => {
     }
 
     useEffect(() => {
-        console.log(update)
         if (update) {
             notify();
         }
+        window.M.updateTextFields()
+        // eslint-disable-next-line
     }, [update]);
-
-
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -78,27 +77,27 @@ const UpdateUser = ({ id }) => {
 
     return (
         <div>
-            <button data-target={`modalU${id}`} onClick={handleUpdate} className="update btn blue modal-trigger"><i className="material-icons">edit</i></button>
+            <a className='waves-effect waves-light modal-trigger' href={`#modalU${id}`} onClick={handleUpdate}><i className='material-icons orange-text text-darken-2'>edit</i></a>
             {
-                 <div id={`modalU${id}`}  className="row modal animate__animated animate__fadeIn">
-                    <form className="col s12" onSubmit={handleUpdateUser}>
-                        <div className="row">
-                            <div className="input-field col s6">
-                            <input onChange={handleChange} value={dataUpdate.firstname} name="firstname" id={`firstname${id}`} type="text" className="validate"/>
-                            <label htmlFor={`firstname${id}`} className="active">First Name</label>
+                 <div id={`modalU${id}`}  className='row modal animate__animated animate__fadeIn'>
+                    <form className='col s12' onSubmit={handleUpdateUser}>
+                        <div className='row'>
+                            <div className='input-field col s6'>
+                                <input onChange={handleChange} value={dataUpdate.firstname} name='firstname' id={`firstname${id}`} type='text' className='validate'/>
+                                <label htmlFor={`firstname${id}`} className='active'>First Name</label>
                             </div>
-                            <div className="input-field col s6">
-                            <input onChange={handleChange} value={dataUpdate.lastname} name="lastname" id={`lastname${id}`} type="text" className="validate"/>
-                            <label htmlFor={`lastname${id}`} className="active">Last Name</label>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="input-field col s12">
-                            <input onChange={handleChange} value={dataUpdate.email} name="email" id={`email${id}`}type="email" className="validate"/>
-                            <label htmlFor={`email${id}`} className="active">Email</label>
+                            <div className='input-field col s6'>
+                                <input onChange={handleChange} value={dataUpdate.lastname} name="lastname" id={`lastname${id}`} type='text' className='validate'/>
+                                <label htmlFor={`lastname${id}`} className='active'>Last Name</label>
                             </div>
                         </div>
-                        <button className="waves-effect waves-light btn modal-close" type="submit">Update User</button>
+                        <div className='row'>
+                            <div className='input-field col s12'>
+                                <input onChange={handleChange} value={dataUpdate.email} name='email' id={`email${id}`}type='email' className='validate'/>
+                                <label htmlFor={`email${id}`} className='active'>Email</label>
+                            </div>
+                        </div>
+                        <button className='waves-effect waves-light btn modal-close' type='submit'>Update User</button>
                     </form>
                 </div>
             }

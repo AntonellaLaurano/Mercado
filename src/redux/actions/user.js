@@ -1,16 +1,15 @@
-import { API_URL } from "../Api/api";
-import { types } from "../types/types"
+import { API_URL } from '../../Api/api'
+import { types } from '../types/types'
 
 export const users = (data) => {
-    console.log(data)
     return {
         type: types.userRead,
         payload: data
     }
 }
 
-export const createUser = (user = {}, token = "") => {
-    const url = API_URL + "users";
+export const createUser = (user = {}, token = '') => {
+    const url = API_URL + 'users';
     return async (dispatch) => {
         const response = await fetch(url, {
             method: "POST",
@@ -20,15 +19,12 @@ export const createUser = (user = {}, token = "") => {
             },
             body: JSON.stringify(user)
         });
-        console.log('response')
         const newUser = await response.json();
-        console.log(newUser);
         return dispatch(create(newUser.response));
     }
 }
 
 export const create = (dataUser) => {
-    console.log(dataUser)
     return {
         type: types.userAdd,
         payload: dataUser

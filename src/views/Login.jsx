@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { loginEmail } from '../actions/auth';
-import PasswordVisibility from '../components/PasswordVisibilty';
+import { useDispatch } from 'react-redux'
+import { loginEmail } from '../redux/actions/auth'
+import PasswordVisibility from '../components/PasswordVisibilty'
 
 import './css/Login.css';
 
@@ -11,8 +11,8 @@ const Login = () => {
     const dispatch = useDispatch();
 
     const [dataLogin, setDataLogin] = useState({
-        email: "",
-        password: ""
+        email: '',
+        password: ''
     })
 
     const { email, password } = dataLogin;
@@ -33,7 +33,7 @@ const Login = () => {
     }
 
     return (
-        <div className="login">
+        <div className="Login">
             <div className="row container z-depth-2 hoverable">
                 <form className="col s12" onSubmit={handleLogin}>
                     <div className="row">
@@ -51,7 +51,7 @@ const Login = () => {
                             <label htmlFor="password">Password</label>
                         </div>
                     </div>
-                    <button className="waves-effect waves-light btn">Login</button>
+                    <button className="waves-effect waves-light btn orange darken-2">Login</button>
                 </form>
             </div>
         </div>

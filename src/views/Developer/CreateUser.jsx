@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { createUser } from '../../actions/user';
+import { createUser } from '../../redux/actions/user';
 
 import './css/CreateUser.css'
 
@@ -15,7 +15,7 @@ const CreateUser = () => {
         email: "",
         password: "",
         stores: [1],
-        roles: 3,
+        roles: 2,
         sexual_orientation: "F",
         profile_image: null
     });

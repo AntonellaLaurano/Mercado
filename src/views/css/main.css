@@ -1,28 +1,19 @@
-.input-field input {
-    border-bottom: 1px solid #4090CB !important;
-    -webkit-box-shadow: 0 1px 0 0 #4090CB !important;
-    box-shadow: 0 1px 0 0 #4090CB !important;
-}
-
 .input-field input:focus + label {
-    color: #4090CB !important;
+    color: rgb(245,124,0) !important;
 }
 
 .row .input-field input:focus {
-    border-bottom: 1px solid #4090CB !important;
-    box-shadow: 0 1px 0 0 #4090CB !important
+    border-bottom: 1px solid rgb(245,124,0) !important;
+    -webkit-box-shadow: 0 1px 0 0 rgb(245,124,0) !important;
+    box-shadow: 0 1px 0 0 rgb(245,124,0) !important;
 }
 
 .input-field .prefix.active {
-    color: #4090CB;
+    color: rgb(245,124,0);
 }
 
-.btn {
-    background-color: #4090CB;
-}
-
-.btn:hover {
-    background-color: #5B7EC7;
+label.active {
+    color: rgb(245,124,0) !important;
 }
 
 .inputPassword {

@@ -19,9 +19,9 @@ const Navbar = () => {
 
     return (
         <nav>
-            <div className="nav-wrapper">
-                <div onClick={handleSidenav} data-target="slide-out" className="sidenav-trigger"><i className="material-icons">dehaze</i></div>
-                <img alt="" data-target="dropdown" className="brand-logo right dropdown-trigger circle photoDropdown" src="https://randomuser.me/api/portraits/men/75.jpg"/>
+            <div className='nav-wrapper'>
+                <div onClick={handleSidenav} data-target='slide-out' className='sidenav-trigger'><i className='material-icons'>dehaze</i></div>
+                <img alt='' data-target='dropdown' className='brand-logo right dropdown-trigger circle photoDropdown' src='https://randomuser.me/api/portraits/men/75.jpg'/>
                 <NavDropdown />
             </div>
         </nav>

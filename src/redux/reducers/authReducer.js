@@ -1,8 +1,9 @@
-import storage from "redux-persist/lib/storage";
-import { types } from "../types/types";
+import storage from 'redux-persist/lib/storage';
+import { types } from '../types/types';
 
 const initialState = {
-    access: "",
+    access: '',
+    role: '',
     details: {}
 }
 
@@ -11,7 +12,8 @@ export const authReducer = (state = initialState, action) => {
         case types.login:
             return {
                 ...state,
-                access: action.payload
+                access: action.payload.access,
+                role: action.payload.role
             }
 
         case types.details:

@@ -1,0 +1,15 @@
+.myProfile {
+    width: 60vw;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, .7);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-radius: 10px;
+}
+
+.primary {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}

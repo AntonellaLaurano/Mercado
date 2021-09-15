@@ -1,0 +1,20 @@
+.delete, .update {
+    cursor: pointer;
+}
+
+td:first-child {
+    width: 15%;
+}
+
+td:nth-child(n+4) {
+    width: 15%;
+}
+
+.avatarUsers {
+    width: 50px;
+    height: 50px;
+}
+
+.iconUsers {
+    font-size: 50px;
+}
