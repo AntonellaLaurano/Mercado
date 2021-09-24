@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
-import { updateUser } from '../../../redux/actions/user'
 import { userById } from '../../../helpers/userById.js'
+import { updateUser } from '../../../redux/actions/user.js'
 
 import './css/UpdateUser.css'
-
 import M from 'materialize-css'
 
-
-const UpdateUser = ({ id }) => {
+const UpdateUser = () => {
     const dispatch = useDispatch();
 
     const access =  useSelector(state => state.auth.access);
+    const id = useSelector(state => state.user.idGetUser);
 
-    const [update, setUpdate] = useState(false);
-
+    useEffect(() => {
+        var elems = document.querySelectorAll('select');
+        M.FormSelect.init(elems);
+    }, [])
 
     const [dataUpdate, setDataUpdate] = useState({
         firstname: '',
@@ -43,16 +43,12 @@ const UpdateUser = ({ id }) => {
         } catch (error) {
             console.log(error);
         }
-        
     }
 
     useEffect(() => {
-        if (update) {
-            notify();
-        }
-        window.M.updateTextFields()
+        notify();
         // eslint-disable-next-line
-    }, [update]);
+    }, [id]);
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -62,13 +58,12 @@ const UpdateUser = ({ id }) => {
         });
     }
 
-    const handleUpdate = (e) => {
+    /*const handleUpdate = (e) => {
         e.preventDefault();
         setUpdate(true);
         var elem = document.querySelectorAll('.modal');
         M.Modal.init(elem);
-        
-    }
+    }*/
 
     const handleUpdateUser = (e) => {
         e.preventDefault();
@@ -77,33 +72,38 @@ const UpdateUser = ({ id }) => {
 
     return (
         <div>
-            <a className='waves-effect waves-light modal-trigger' href={`#modalU${id}`} onClick={handleUpdate}><i className='material-icons orange-text text-darken-2'>edit</i></a>
-            {
-                 <div id={`modalU${id}`}  className='row modal animate__animated animate__fadeIn'>
-                    <form className='col s12' onSubmit={handleUpdateUser}>
-                        <div className='row'>
-                            <div className='input-field col s6'>
-                                <input onChange={handleChange} value={dataUpdate.firstname} name='firstname' id={`firstname${id}`} type='text' className='validate'/>
-                                <label htmlFor={`firstname${id}`} className='active'>First Name</label>
-                            </div>
-                            <div className='input-field col s6'>
-                                <input onChange={handleChange} value={dataUpdate.lastname} name='lastname' id={`lastname${id}`} type='text' className='validate'/>
-                                <label htmlFor={`lastname${id}`} className='active'>Last Name</label>
-                            </div>
+                <div className='row animate__animated animate__fadeIn glass'>
+                <form className='col s12' onSubmit={handleUpdateUser}>
+                    <div className='row'>
+                        <div className='input-field col s6'>
+                            <input onChange={handleChange} value={dataUpdate.firstname} name='firstname' id='firstname' type='text' className='validate'/>
+                            <label htmlFor='firstname' className='active'>First Name</label>
                         </div>
-                        <div className='row'>
-                            <div className='input-field col s12'>
-                                <input onChange={handleChange} value={dataUpdate.email} name='email' id={`email${id}`}type='email' className='validate'/>
-                                <label htmlFor={`email${id}`} className='active'>Email</label>
-                            </div>
+                        <div className='input-field col s6'>
+                            <input onChange={handleChange} value={dataUpdate.lastname} name='lastname' id='lastname' type='text' className='validate'/>
+                            <label htmlFor='lastname' className='active'>Last Name</label>
                         </div>
-                        <button className='waves-effect waves-light btn modal-close' type='submit'>Update User</button>
-                    </form>
-                </div>
-            }
-            
+                    </div>
+                    <div className='row'>
+                        <div className='input-field col s12'>
+                            <input onChange={handleChange} value={dataUpdate.email} name='email' id='email' type='email' className='validate'/>
+                            <label htmlFor='email' className='active'>Email</label>
+                        </div>
+                    </div>
+                    <div className='row'>
+                        <div className='input-field col s12'>
+                            <select onChange={handleChange} name='sexual_orientation' defaultValue={''} className='validate' required aria-required="true">
+                                <option value='' disabled>Elige tu opción</option>
+                                <option value='F'>Femenino</option>
+                                <option value='M'>Masculino</option>
+                            </select>
+                            <label htmlFor='sexual_orientation'>Otientación sexual</label>
+                        </div>
+                    </div>
+                    <button className='waves-effect waves-light btn modal-close' type='submit'>Update User</button>
+                </form>
+            </div>
         </div>
-        
     )
 }
 

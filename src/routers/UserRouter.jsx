@@ -4,6 +4,7 @@ import Developer from '../views/Developer/Developer';
 
 const UserRouter = ({...resto}) => {
     const location = useLocation();
+    
     return (
         <Switch>
             <Route exact path={`${location.pathname}`} component={Developer}/>

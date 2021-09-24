@@ -6,8 +6,7 @@ import './css/UsersList.css'
 
 const UsersList = ({ title }) => {
     const users = useSelector((state) => state.user.data);
-    console.log(users)
-    
+
     return (
         <div className='usersList'>
             <h4 className='title'>{title}</h4>
@@ -21,7 +20,6 @@ const UsersList = ({ title }) => {
                 </tbody>
             </table>
         </div>
-        
     )
 }
 

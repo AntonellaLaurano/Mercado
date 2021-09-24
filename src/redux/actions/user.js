@@ -20,6 +20,7 @@ export const createUser = (user = {}, token = '') => {
             body: JSON.stringify(user)
         });
         const newUser = await response.json();
+        console.log(newUser)
         return dispatch(create(newUser.response));
     }
 }
@@ -31,31 +32,16 @@ export const create = (dataUser) => {
     }
 }
 
-export const getUserById = (id, token) => {
-    const url = API_URL + `users/${id}`;
-    return async (dispacth) => {
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'authorization': token,
-                'content-type': 'application/json'
-            }
-        });
-        const UserById = await response.json()
-        return dispacth(getUser(UserById));
-    }
-}
-
-export const getUser = (UserById) => {
+export const idGetUser = (id) => {
     return {
         type: types.userGetById,
-        payload: UserById
+        payload: id
     }
 }
 
 export const updateUser = (user, id, token) => {
     const url = API_URL + `roles/${user.roles.id}/users/${id}/`;
-    return async (dispatch) => {console.log('sdsd')
+    return async (dispatch) => {
         const response = await fetch(url, {
             method: 'PUT',
             headers: {
@@ -80,8 +66,8 @@ export const Update = (userU) => {
     }
 }
 
-export const deleteUser = (id, token) => {
-    const url = API_URL + `users/${id}`;
+export const deleteUser = (id, role, token) => {
+    const url = API_URL + `users/${role}/${id}`;
     return async (dispatch) => {
         await fetch(url, {
             method: 'DELETE',

@@ -3,7 +3,7 @@ import { types } from "../types/types";
 
 const initialState = {
     data: [],
-    userGetById: {}
+    idGetUser: ''
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -30,7 +30,7 @@ export const userReducer = (state = initialState, action) => {
         case types.userGetById:
             return {
                 ...state,
-                userGetById: action.payload
+                idGetUser: action.payload
             }
 
         case types.userUpdate:
