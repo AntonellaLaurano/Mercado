@@ -28,6 +28,13 @@ export const authReducer = (state = initialState, action) => {
                 ...state,
                 details: action.payload
             }
+
+        case types.refresh:
+            return {
+                ...state,
+                /*access: action.payload.token,*/
+                expired: action.payload.expired
+            }
             
         case types.logout:
             storage.removeItem('persist:root');

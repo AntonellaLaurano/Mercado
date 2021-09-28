@@ -1,10 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import User from './UserList/User'
+import User from './User'
+import '../../components/UserList/User'
 
-import './css/UsersList.css'
+import '../../css/components/UserList/usersList.css'
 
-const UsersList = ({ title }) => {
+const UsersList = ({ title, role }) => {
     const users = useSelector((state) => state.user.data);
 
     return (

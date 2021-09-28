@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { userById } from '../../../helpers/userById.js'
-import { updateUser } from '../../../redux/actions/user.js'
+import { userById } from '../helpers/userById'
+import { updateUser } from '../redux/actions/user.js'
 
-import './css/UpdateUser.css'
+import '../css/components/updateUser.css'
 import M from 'materialize-css'
 
 const UpdateUser = () => {
     const dispatch = useDispatch();
 
-    const access =  useSelector(state => state.auth.access);
-    const id = useSelector(state => state.user.idGetUser);
+    const { access } =  useSelector(state => state.auth);
+    const { idGetUser } = useSelector(state => state.user)
 
     useEffect(() => {
         var elems = document.querySelectorAll('select');
@@ -36,7 +36,7 @@ const UpdateUser = () => {
 
     const notify = async () => {
         try {
-            const data = await userById(id, access);
+            const data = await userById(idGetUser, access);
             const user = await data.json();
             const { firstname, lastname, email, roles } = user;
             setDataUpdate({ ...dataUpdate, firstname, lastname, email, roles });
@@ -48,7 +48,7 @@ const UpdateUser = () => {
     useEffect(() => {
         notify();
         // eslint-disable-next-line
-    }, [id]);
+    }, [idGetUser]);
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -57,17 +57,10 @@ const UpdateUser = () => {
            [e.target.name]: value
         });
     }
-
-    /*const handleUpdate = (e) => {
-        e.preventDefault();
-        setUpdate(true);
-        var elem = document.querySelectorAll('.modal');
-        M.Modal.init(elem);
-    }*/
-
+    
     const handleUpdateUser = (e) => {
         e.preventDefault();
-        dispatch(updateUser(dataUpdate, id, access));
+        dispatch(updateUser(dataUpdate, idGetUser, access));
     }
 
     return (

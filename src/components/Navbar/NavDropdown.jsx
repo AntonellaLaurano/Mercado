@@ -15,8 +15,9 @@ const Dropdown = () => {
     return (
         <ul id='dropdown' className='dropdown-content'>
             <li><Link to='/desarrollador#perfil' className='orange-text text-darken-2'>Mi perfil</Link></li>
+            <li></li>
             <li className="divider"></li>
-            <li><span onClick={handleLogout} className='orange-text text-darken-2'>Logout</span></li>
+            <li><span onClick={handleLogout} className='orange-text text-darken-2'>Cerrar sesión</span></li>
         </ul>
     )
 }

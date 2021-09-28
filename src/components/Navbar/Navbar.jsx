@@ -3,7 +3,7 @@ import M from 'materialize-css'
 
 import NavDropdown from './NavDropdown'
 
-import './css/Navbar.css'
+import '../../css/components/Navbar/navbar.css'
 
 const Navbar = () => {
     const handleSidenav = () => {

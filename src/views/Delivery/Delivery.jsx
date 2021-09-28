@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import CreateUser from '../../components/CreateUser';
 import MyProfile from '../../components/MyProfile';
-import Navbar from '../../components/Navbar/Navbar'
+import Navbar from '../../components/Navbar/Navbar';
 import UpdateUser from '../../components/UpdateUser';
 import UsersList from '../../components/UserList/UsersList';
-import UserMenu from '../../components/UserMenu'
+import UserMenu from '../../components/UserMenu';
 import { idGetUser } from '../../redux/actions/user';
 
-const Administrator = () => {
+const Delivery = () => {
     const location = useLocation();
     const dispatch = useDispatch();
 
@@ -19,28 +19,9 @@ const Administrator = () => {
         {
             en: {},
             es: 'Usuarios'
-        },
-        {
-            en: {},
-            es: 'Desarrolladores'
-        },
-        {
-            en: {},
-            es: 'Administradores'
-        },
-        {
-            en: {},
-            es: 'Propietarios'
-        },
-        {
-            en: {},
-            es: 'Clientes'
-        },
-        {
-            en: {},
-            es: 'Deliveries'
         }
     ];
+
 
     for (let i= 4; i < 10; i++) {
         if (permissions[i].actions.get) {
@@ -68,11 +49,6 @@ const Administrator = () => {
                         '#crearusuario': <CreateUser />,
                         '#actualizarusuario': <UpdateUser />,
                         '#usuarios': <UsersList title='Todos los usuarios'/>,
-                        '#desarrolladores': <UsersList title='Desarrolladores'/>,
-                        '#administradores': <UsersList title='Administradores'/>,
-                        '#propietarios': <UsersList title='Propietarios'/>,
-                        '#clientes': <UsersList title='Clientes'/>,
-                        '#deliveries': <UsersList title='Deliveries'/>
                     }[location.hash]
                 }
             </div>
@@ -80,4 +56,4 @@ const Administrator = () => {
     )
 }
 
-export default Administrator
+export default Delivery

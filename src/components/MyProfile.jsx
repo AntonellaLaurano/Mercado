@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 import { transformUppercase } from '../helpers/transformUppercase'
 
-import './css/MyProfile.css'
+import '../css/components/myProfile.css'
 
 const MyProfile = () => {
     const userProfile = useSelector(state => state.auth.details);

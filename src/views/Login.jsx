@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { loginEmail } from '../redux/actions/auth'
 import PasswordVisibility from '../components/PasswordVisibilty'
 
-import './css/Login.css';
+import '../css/login.css';
 
 const Login = () => {
 
@@ -19,7 +19,6 @@ const Login = () => {
 
     const handleChange = (e) => {
         const value = e.target.value;
-
         setDataLogin({
             ...dataLogin,
             [e.target.name]: value
@@ -38,7 +37,7 @@ const Login = () => {
                     <div className='row'>
                         <div className='input-field col s12'>
                             <i className='material-icons prefix'>mail</i>
-                            <input onChange={handleChange} value={email} name='email' id='email' type='email' className='validate' />
+                            <input onChange={handleChange} value={email} name='email' id='email' type='email' className='validate' required />
                             <label htmlFor='email'>Email</label>
                         </div>
                     </div>
@@ -46,7 +45,7 @@ const Login = () => {
                         <div className='input-field col s12'>
                             <i className='material-icons prefix'>vpn_key</i>
                             <PasswordVisibility />
-                            <input onChange={handleChange} value={password} name='password' id='password' type='password' className='validate inputPassword' />
+                            <input onChange={handleChange} value={password} name='password' id='password' type='password' className='validate inputPassword' required />
                             <label htmlFor='password'>Password</label>
                         </div>
                     </div>

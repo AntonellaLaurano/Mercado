@@ -11,3 +11,65 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.input-field input:focus + label {
+    color: rgb(245,124,0) !important;
+}
+
+select:focus + label{
+    color: rgb(245,124,0) !important;
+}
+
+.row .input-field input:focus {
+    border-bottom: 1px solid rgb(245,124,0) !important;
+    -webkit-box-shadow: 0 1px 0 0 rgb(245,124,0) !important;
+    box-shadow: 0 1px 0 0 rgb(245,124,0) !important;
+}
+
+.input-field .prefix.active {
+    color: rgb(245,124,0);
+}
+
+label.active {
+    color: rgb(245,124,0) !important;
+}
+
+.inputPassword {
+    width: calc(100% - 6rem) !important;
+}
+
+.modal {
+    padding: 30px 40px;
+    border-radius: 20px;
+}
+
+.glass {
+    padding: 40px;
+    background-color: rgba(255, 255, 255, .7);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-radius: 10px;
+}
+
+.userLogin {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./images/chantal-garnier-oiIJ5jGijdQ-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow-y: scroll;
+}
+
+.main {
+    max-width: 97vw;
+    max-height: 100vh;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.switch {
+    
+}

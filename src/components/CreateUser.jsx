@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { createUser } from '../../redux/actions/user'
+import { createUser } from '../redux/actions/user'
 import { useHistory } from 'react-router'
 
-import './css/CreateUser.css'
-import '../css/main.css'
+import '../css/components/createUser.css'
+//import '../css/main.css'
 
 import M from 'materialize-css'
 
@@ -40,8 +40,6 @@ const CreateUser = () => {
         } else {
             value = e.target.value;
         }
-        console.log(e.target.value)
-
         setdataCreate({
             ...dataCreate,
            [e.target.name]: value

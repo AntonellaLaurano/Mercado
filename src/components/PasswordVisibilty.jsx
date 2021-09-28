@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import './css/PasswordVisibility.css';
+import '../css/components/passwordVisibility.css';
 
 const PasswordVisibility = () => {
     const [visibilityIcon, setVisibilityIcon] = useState('visibility_off')

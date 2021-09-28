@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import CreateUser from '../../components/CreateUser';
 import MyProfile from '../../components/MyProfile';
-import Navbar from '../../components/Navbar/Navbar'
+import Navbar from '../../components/Navbar/Navbar';
 import UpdateUser from '../../components/UpdateUser';
 import UsersList from '../../components/UserList/UsersList';
-import UserMenu from '../../components/UserMenu'
+import UserMenu from '../../components/UserMenu';
 import { idGetUser } from '../../redux/actions/user';
 
-const Administrator = () => {
+const Owner = () => {
     const location = useLocation();
     const dispatch = useDispatch();
 
@@ -80,4 +80,4 @@ const Administrator = () => {
     )
 }
 
-export default Administrator
+export default Owner

@@ -9,19 +9,23 @@ export const users = (data) => {
 }
 
 export const createUser = (user = {}, token = '') => {
-    const url = API_URL + 'users';
+    const url = `${API_URL}users`;
     return async (dispatch) => {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'authorization': token,
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        });
-        const newUser = await response.json();
-        console.log(newUser)
-        return dispatch(create(newUser.response));
+        try {
+            const response = fetch(url, {
+                method: 'POST',
+                headers: {
+                    'authorization': token,
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            });
+            const newUser = await response.json();
+            console.log(newUser)
+            return dispatch(create(newUser.response));
+        } catch (error) {
+            console.log(error);   
+        }
     }
 }
 
@@ -40,22 +44,26 @@ export const idGetUser = (id) => {
 }
 
 export const updateUser = (user, id, token) => {
-    const url = API_URL + `roles/${user.roles.id}/users/${id}/`;
+    const url = `${API_URL}roles/${user.roles.id}/users/${id}/`;
     return async (dispatch) => {
-        const response = await fetch(url, {
-            method: 'PUT',
-            headers: {
-                'authorization': token,
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        });
-        const userU = await response.json();
-        const userWithRole = {
-                                ...userU.data,
-                                roles: user.roles
-                            }
-        return dispatch(Update(userWithRole));
+        try {
+            const response = await fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'authorization': token,
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            });
+            const userU = await response.json();
+            const userWithRole = {
+                                    ...userU.data,
+                                    roles: user.roles
+                                }
+            return dispatch(Update(userWithRole));
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 
@@ -67,16 +75,23 @@ export const Update = (userU) => {
 }
 
 export const deleteUser = (id, role, token) => {
-    const url = API_URL + `users/${role}/${id}`;
+    console.log('sss')
+    console.log(role)
+    const url = `${API_URL}/users/${id}`;
     return async (dispatch) => {
-        await fetch(url, {
-            method: 'DELETE',
-            headers: {
-                'authorization': token,
-                'content-type': 'application/json'
-            }
-        });
-        dispatch(deleteU(id));
+        try {
+            const response = await fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    'authorization': token,
+                    'content-type': 'application/json'
+                }
+            });
+            console.log(response)
+            dispatch(deleteU(id));
+        } catch (error) {
+            console.log(error);
+        }
     }
 
 }

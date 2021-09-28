@@ -1,11 +1,11 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { loadData } from '../../helpers/loadData'
-import { users } from '../../redux/actions/user'
-import { transformUppercase } from '../../helpers/transformUppercase'
+import { loadData } from '../helpers/loadData'
+import { users } from '../redux/actions/user'
+import { transformUppercase } from '../helpers/transformUppercase'
 
-import './css/UserMenu.css'
+import '../css/components/userMenu.css'
 
 const UserMenu = ({ optionsMenu }) => {
     const dispatch = useDispatch();
@@ -17,6 +17,10 @@ const UserMenu = ({ optionsMenu }) => {
     const role = useSelector(state => state.auth.role);
 
     const handleList = async (direction) => {
+        /**
+         * Esta variable almacena la lista de datos de usuarios
+         * @type {Object}
+         */
         const data = await loadData(access, direction);
         dispatch(users(data));
     }
@@ -32,15 +36,15 @@ const UserMenu = ({ optionsMenu }) => {
                     </div>
                 </li>
                 {
-                    optionsMenu[0].actions.post &&
+                    optionsMenu[0].en.actions.post &&
                     <>
                         <li><Link to='/desarrollador#crearusuario' className='waves-effect waves-light'>Nuevo Usuario</Link></li>
                         <li><div className='divider'></div></li>
                     </>
                 }
                 {
-                    optionsMenu.map(option => (
-                        <li key={option.entity}><Link to={`/${role}#${option.entity}`} onClick={() => handleList(option.entity)} className='waves-effect waves-light'>{transformUppercase(option.entity)}</Link></li>
+                    optionsMenu.map((option, i) => (
+                        <li key={i}><Link to={`/${role}#${option.es.toLowerCase()}`} onClick={() => handleList(option.en.entity)} className='waves-effect waves-light'>{option.es}</Link></li>
                     ))
                 }
                 <li><div className='divider'></div></li>
